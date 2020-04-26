@@ -82,6 +82,7 @@ class MyFilter: ImageRelay {
 ### 3. Add chain to Camera
 
 Using the `add(chain :)`, the chain state is applied as follows.
+Just call it when you apply the filter. (At any point after `camera.add(consumer: renderView)`)
 
 ```swift
 var myFilter = MyFilter()
