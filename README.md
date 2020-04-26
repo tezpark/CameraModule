@@ -101,3 +101,39 @@ myFilter.removeSelf()
 
 #### CURRENT Chain State
 camera --> renderView
+
+
+### 5. Camera capture
+
+`camera.takePhoto()`
+
+Add a `ImageConsumer` to `camera` object and implement a protocol to use the photo.
+
+```swift
+class ViewController: UIViewController {
+    ...
+    override func viewDidLoad() {
+        ...
+        camera = try! Camera(sessionPreset: .hd1920x1080)
+        camera.add(consumer: renderView)
+	camera.add(consumer: self) // Add it to receive the captured image.
+    }
+    ...
+}
+...
+
+extension ViewController: ImageConsumer {
+    func add(source: ImageSource) {
+    }
+    
+    func remove(source: ImageSource) {
+    }
+    
+    func newImageAvailable(_ bnImage: BNImage, from source: ImageSource) {
+        if bnImage.type.didCaptured == true {
+		// Use captured photo
+        }
+    }
+}
+
+```
