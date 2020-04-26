@@ -21,6 +21,15 @@ public enum BNImageType {
             }
         }
     }
+	
+    var didCaptured: Bool? {
+        get {
+            switch self {
+            case .photo: return true
+            default: return false
+            }
+        }
+    }
 }
 
 public struct BNImage {
